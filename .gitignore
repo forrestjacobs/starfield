@@ -1,5 +1,3 @@
 .direnv
-build
-bundle.cjs
 node_modules
-starfield.mp4
+out

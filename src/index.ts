@@ -22,6 +22,6 @@ pellicola(
     duration: 60 * 60 * 1.5,
     renderInParallel: true,
     maxConcurrency: 32,
-    filename: "starfield.mp4",
+    filename: `out/starfield-${new Date().toISOString().replaceAll(":", "-")}.mp4`,
   }
 ).then(() => console.log("Done!"));

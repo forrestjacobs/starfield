@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "render": "rollup --config && node ./bundle.cjs"
+    "render": "rollup --config && node ./out/bundle.cjs"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^11.1.1",
