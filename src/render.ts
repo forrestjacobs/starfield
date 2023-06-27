@@ -17,7 +17,7 @@ export function makeRenderer(layers: StarLayer[]) {
 
     // Set the fill style and draw a rectangle
     c.fillStyle = gradient;
-    c.fillRect(0, 0, width, width);
+    c.fillRect(0, 0, width, height);
 
     const smallerDimension = Math.min(width, height);
 
