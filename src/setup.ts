@@ -43,7 +43,7 @@ export function generateStars(): StarLayer[] {
       y: Math.random(),
     };
 
-    const fillStyle = `#${hexFromHue(Math.floor(Math.random() * 255))}`;
+    const fillStyle = `#${hexFromHue(Math.floor(Math.random() * 32) * 8)}`;
 
     const stars = layers[Math.floor(NUM_LAYERS * Math.random())];
     if (stars[fillStyle] === undefined) {
