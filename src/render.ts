@@ -41,8 +41,8 @@ export function makeRenderer(layers: StarLayer[]) {
             TAU
           );
           c.closePath();
-        }
         c.fill();
+        }
       }
     }
   };
