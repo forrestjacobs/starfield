@@ -2,13 +2,11 @@ import { StarLayer } from "./setup";
 
 const TAU = 2 * Math.PI;
 
-export function makeRenderer(layers: StarLayer[]) {
-  return (
+export function renderBackground(
     c: CanvasRenderingContext2D,
     width: number,
-    height: number,
-    timeMs: number
-  ): void => {
+  height: number
+) {
     const gradient = c.createLinearGradient(0, 0, width / 16, height);
 
     // Add three color stops
@@ -18,9 +16,16 @@ export function makeRenderer(layers: StarLayer[]) {
     // Set the fill style and draw a rectangle
     c.fillStyle = gradient;
     c.fillRect(0, 0, width, height);
+}
 
+export function makeRenderer(layers: StarLayer[]) {
+  return (
+    c: CanvasRenderingContext2D,
+    width: number,
+    height: number,
+    timeMs: number
+  ): void => {
     const smallerDimension = Math.min(width, height);
-
     for (const layer of layers) {
       const radius = layer.radius * smallerDimension;
       const offset = (timeMs * layer.dx) % 1;

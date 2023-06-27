@@ -1,6 +1,6 @@
 import pellicola from "pellicola";
 import { generateStars } from "./setup";
-import { makeRenderer } from "./render";
+import { makeRenderer, renderBackground } from "./render";
 
 const WIDTH = 1920;
 const HEIGHT = 1080;
@@ -9,6 +9,11 @@ pellicola(
   () => {
     const render = makeRenderer(generateStars());
     return ({ context, width, height, time }) => {
+      renderBackground(
+        context as unknown as CanvasRenderingContext2D,
+        width,
+        height
+      );
       render(
         context as unknown as CanvasRenderingContext2D,
         width,

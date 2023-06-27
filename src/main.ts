@@ -20,6 +20,7 @@ const c = canvas.getContext("2d")!;
 const render = makeRenderer(generateStars());
 
 function tick(time: DOMHighResTimeStamp) {
+  c.clearRect(0, 0, canvas.width, canvas.height);
   render(c, canvas.width, canvas.height, time);
   requestAnimationFrame(tick);
 }
