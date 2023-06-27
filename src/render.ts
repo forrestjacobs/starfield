@@ -1,8 +1,8 @@
-import { Star } from "./setup";
+import { StarLayer } from "./setup";
 
 const TAU = 2 * Math.PI;
 
-export function makeRenderer(stars: Star[]) {
+export function makeRenderer(layers: StarLayer[]) {
   return (
     c: CanvasRenderingContext2D,
     width: number,
@@ -19,12 +19,25 @@ export function makeRenderer(stars: Star[]) {
     c.fillStyle = gradient;
     c.fillRect(0, 0, width, width);
 
-    for (const star of stars) {
-      c.beginPath();
-      const x = (star.x + (timeMs / 8) * Math.pow(star.z, 32)) % width;
-      c.arc(x, star.y, star.radius, 0, TAU, false);
-      c.fillStyle = star.fillStyle;
-      c.fill();
+    const smallerDimension = Math.min(width, height);
+
+    for (const layer of layers) {
+      const radius = layer.radius * smallerDimension;
+      const offset = (timeMs * layer.dx) % 1;
+      for (const group of layer.groups) {
+        c.fillStyle = group.fillStyle;
+        for (const star of group.stars) {
+          c.beginPath();
+          c.arc(
+            width * ((star.x + offset) % 1),
+            height * star.y,
+            radius,
+            0,
+            TAU
+          );
+          c.fill();
+        }
+      }
     }
   };
 }

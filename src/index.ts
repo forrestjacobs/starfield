@@ -7,12 +7,12 @@ const HEIGHT = 1080;
 
 pellicola(
   () => {
-    const render = makeRenderer(generateStars(WIDTH, HEIGHT));
-    return ({ context, time }) => {
+    const render = makeRenderer(generateStars());
+    return ({ context, width, height, time }) => {
       render(
         context as unknown as CanvasRenderingContext2D,
-        WIDTH,
-        HEIGHT,
+        width,
+        height,
         time * 1_000
       );
     };

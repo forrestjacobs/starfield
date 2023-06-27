@@ -13,9 +13,7 @@ document.querySelector<HTMLDivElement>("#app")!.append(canvas);
 
 const c = canvas.getContext("2d")!;
 
-const stars = generateStars(WIDTH, HEIGHT);
-
-const render = makeRenderer(stars);
+const render = makeRenderer(generateStars());
 
 function tick(time: DOMHighResTimeStamp) {
   render(c, WIDTH, HEIGHT, time);
