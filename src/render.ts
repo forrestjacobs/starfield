@@ -31,17 +31,17 @@ export function makeRenderer(layers: StarLayer[]) {
       const offset = (timeMs * layer.dx) % 1;
       for (const group of layer.groups) {
         c.fillStyle = group.fillStyle;
-        for (const star of group.stars) {
+        for (const [x, y] of group.stars) {
           c.beginPath();
           c.arc(
-            width * ((star.x + offset) % 1),
-            height * star.y,
+            width * ((x + offset) % 1),
+            height * y,
             radius,
             0,
             TAU
           );
           c.closePath();
-        c.fill();
+          c.fill();
         }
       }
     }

@@ -1,10 +1,7 @@
 const NUM_STARS = 4_096;
 const NUM_LAYERS = 256;
 
-export type Star = {
-  x: number;
-  y: number;
-};
+export type Star = [number, number];
 
 export type StarGroup = {
   fillStyle: string;
@@ -38,10 +35,7 @@ export function generateStars(): StarLayer[] {
     () => ({})
   );
   for (let i = 0; i < NUM_STARS; i++) {
-    const star: Star = {
-      x: Math.random(),
-      y: Math.random(),
-    };
+    const star: Star = [Math.random(), Math.random()];
 
     const fillStyle = `#${hexFromHue(Math.floor(Math.random() * 32) * 8)}`;
 
