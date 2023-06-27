@@ -16,7 +16,7 @@
     "typescript": "^5.0.2",
     "vite": "^4.3.9"
   },
-  "dependencies": {
+  "optionalDependencies": {
     "pellicola": "^0.13.0"
   }
 }
