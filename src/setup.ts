@@ -1,5 +1,5 @@
-const NUM_STARS = 4_096;
-const NUM_LAYERS = 256;
+const NUM_STARS = 3072;
+const NUM_LAYERS = 32;
 
 export type Star = [number, number];
 
@@ -39,7 +39,8 @@ export function generateStars(): StarLayer[] {
 
     const fillStyle = `#${hexFromHue(Math.floor(Math.random() * 32) * 8)}`;
 
-    const stars = layers[Math.floor(NUM_LAYERS * Math.random())];
+    const z = Math.pow(Math.random(), 12);
+    const stars = layers[Math.floor(NUM_LAYERS * z)];
     if (stars[fillStyle] === undefined) {
       stars[fillStyle] = [];
     }
@@ -47,8 +48,8 @@ export function generateStars(): StarLayer[] {
   }
 
   return layers.map((layer, i) => ({
-    radius: Math.max(1, Math.pow((i / NUM_LAYERS) * 4, 4) / 64) / 2048,
-    dx: Math.pow(i / NUM_LAYERS, 32) / 15_360,
+    radius: (1 + 3 * Math.sqrt(i / NUM_LAYERS)) / 2000,
+    dx: Math.pow(i / NUM_LAYERS, 2.5) / 20_000,
     groups: Object.entries(layer).map(([fillStyle, stars]) => ({
       fillStyle,
       stars,
