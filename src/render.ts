@@ -3,19 +3,19 @@ import { StarLayer } from "./setup";
 const TAU = 2 * Math.PI;
 
 export function renderBackground(
-    c: CanvasRenderingContext2D,
-    width: number,
+  c: CanvasRenderingContext2D,
+  width: number,
   height: number
 ) {
-    const gradient = c.createLinearGradient(0, 0, width / 16, height);
+  const gradient = c.createLinearGradient(0, 0, width / 16, height);
 
-    // Add three color stops
-    gradient.addColorStop(0, "#383040");
-    gradient.addColorStop(1, "#000000");
+  // Add three color stops
+  gradient.addColorStop(0, "#383040");
+  gradient.addColorStop(1, "#000000");
 
-    // Set the fill style and draw a rectangle
-    c.fillStyle = gradient;
-    c.fillRect(0, 0, width, height);
+  // Set the fill style and draw a rectangle
+  c.fillStyle = gradient;
+  c.fillRect(0, 0, width, height);
 }
 
 export function makeRenderer(layers: StarLayer[]) {
@@ -40,8 +40,9 @@ export function makeRenderer(layers: StarLayer[]) {
             0,
             TAU
           );
-          c.fill();
+          c.closePath();
         }
+        c.fill();
       }
     }
   };
